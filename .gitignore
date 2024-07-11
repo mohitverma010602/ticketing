@@ -119,20 +119,3 @@ dist
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
 .DS_Store
-
-# Ignore all YAML files by default
-*.yaml
-*.yml
-
-# Do not ignore specific important configuration files
-!k8s/deployment.yaml
-!k8s/service.yaml
-!ci/cd-config.yaml
-
-# Ignore environment-specific configurations
-.env.yaml
-.env.*.yaml
-
-# Ignore generated files
-dist/
-build/
