@@ -2,8 +2,8 @@ import { Router, Request, Response, NextFunction } from "express";
 import { User } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validateRequest";
+import { BadRequestError } from "@mv-tik/common";
+import { validateRequest } from "@mv-tik/common";
 import { Password } from "../services/password";
 
 const router = Router();
