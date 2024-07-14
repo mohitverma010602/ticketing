@@ -7,8 +7,7 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
-import { errorHandler } from "@mv-tik/common";
-import { NotFoundError } from "@mv-tik/common";
+import { NotFoundError, errorHandler } from "@mv-tik/common";
 
 const app = express();
 

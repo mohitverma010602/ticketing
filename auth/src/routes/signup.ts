@@ -3,8 +3,7 @@ import { z } from "zod";
 import jwt from "jsonwebtoken";
 
 import { User } from "../models/user.model";
-import { BadRequestError } from "@mv-tik/common";
-import { validateRequest } from "@mv-tik/common";
+import { validateRequest, BadRequestError } from "@mv-tik/common";
 
 const router = Router();
 
