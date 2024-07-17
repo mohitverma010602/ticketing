@@ -7,6 +7,8 @@ import {
 import { Router, Request, Response } from "express";
 import { z } from "zod";
 import { Ticket } from "../models/ticket";
+import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = Router();
 
@@ -38,6 +40,14 @@ router
       });
 
       await ticket.save();
+
+      // publish an event
+      await new TicketUpdatedPublisher(natsWrapper.client).publish({
+        id: ticket.id,
+        title: ticket.title,
+        price: ticket.price,
+        userId: ticket.userId,
+      });
 
       res.send(ticket);
     }
