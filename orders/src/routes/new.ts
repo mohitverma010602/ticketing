@@ -9,6 +9,8 @@ import mongoose from "mongoose";
 import { z } from "zod";
 import { Ticket } from "../model/ticket";
 import { Order, OrderStatus } from "../model/order";
+import { OrderCreatedPublisher } from "../events/publishers/order-created-publishers";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = Router();
 
@@ -61,17 +63,16 @@ router.post(
     await order.save();
 
     // Publish an event saying that an order was created
-    // For example, you might have something like:
-    // await new OrderCreatedPublisher(natsWrapper.client).publish({
-    //   id: order.id,
-    //   status: order.status,
-    //   userId: order.userId,
-    //   expiresAt: order.expiresAt.toISOString(),
-    //   ticket: {
-    //     id: ticket.id,
-    //     price: ticket.price,
-    //   },
-    // });
+    new OrderCreatedPublisher(natsWrapper.client).publish({
+      id: order.id,
+      status: order.status,
+      userId: order.userId,
+      expiresAt: order.expiresAt.toISOString(),
+      ticket: {
+        id: ticket.id,
+        price: ticket.price,
+      },
+    });
 
     res.status(201).send(order);
   }
