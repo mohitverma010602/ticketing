@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mv-tik/common": "^1.0.15",
+    "@mv-tik/common": "^1.0.17",
     "@types/bull": "^4.10.0",
     "bull": "^4.15.1",
     "node-nats-streaming": "^0.3.2",

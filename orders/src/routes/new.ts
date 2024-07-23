@@ -14,7 +14,7 @@ import { natsWrapper } from "../nats-wrapper";
 
 const router = Router();
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 1 * 60;
 
 const newOrderValidationSchema = z.object({
   ticketId: z
