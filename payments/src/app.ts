@@ -4,6 +4,7 @@ import "express-async-errors";
 import cookieSession from "cookie-session";
 
 import { NotFoundError, currentUser, errorHandler } from "@mv-tik/common";
+import { createChargeRouter } from "./routes/new";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(
 app.use(currentUser);
 
 // Routes
+app.use("/api/payments", createChargeRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();

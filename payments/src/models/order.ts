@@ -31,7 +31,6 @@ const orderSchema = new Schema(
       type: String,
       required: true,
       enum: Object.values(OrderStatus),
-      default: OrderStatus.Created,
     },
     price: {
       type: Number,

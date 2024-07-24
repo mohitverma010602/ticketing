@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 declare global {
   namespace NodeJS {
     interface Global {
-      signup(): Promise<string[]>;
+      signup(id?: string): Promise<string[]>;
     }
   }
 }
@@ -40,9 +40,9 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-(global as any).signup = async () => {
+(global as any).signup = async (id?: string) => {
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     email: "test@test.com",
   };
 
