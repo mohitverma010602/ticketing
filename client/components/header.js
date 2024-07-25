@@ -13,6 +13,8 @@ export default function Header({ currentUser }) {
   const links = [
     !currentUser && { label: "Sign in", href: "/auth/signin" },
     !currentUser && { label: "Sign up", href: "/auth/signup" },
+    currentUser && { label: "Sell Ticket", href: "/tickets/new" },
+    currentUser && { label: "My Orders", href: "/orders" },
     currentUser && { label: "Sign out", href: "/auth/signout" },
   ]
     .filter(Boolean)

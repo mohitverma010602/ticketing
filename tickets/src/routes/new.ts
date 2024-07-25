@@ -8,8 +8,11 @@ import { natsWrapper } from "../nats-wrapper";
 const router = Router();
 
 const validateTicket = z.object({
-  title: z.string().trim().min(1),
-  price: z.number().gt(0).multipleOf(0.01),
+  title: z.string().trim().min(1, { message: "Title must be provided" }),
+  price: z
+    .number()
+    .gt(0)
+    .multipleOf(0.01, { message: "Price must be greater than 0" }),
 });
 
 router
